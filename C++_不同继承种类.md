@@ -20,3 +20,5 @@ In C++, there're 5 types of Inheritance; namely,
 3. ######hierarchical: 多个derived类继承同一个base类(最多)
 4.  multi-level: 链式继承: A-->B-->C...
 5.  hybrid(virtual): a combination of Herarchical & Multi-level Inheritance
+
+https://www.studytonight.com/cpp/types-of-inheritance.php 
