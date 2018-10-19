@@ -22,6 +22,6 @@ Derived class inherits from Base: 3 kind of inheritance
 	
 	还是这两类元素被Derived类继承了，在Derived类中，这两种都变成了private权限
 	
-	由此可以看出，Base类中的private元素实际上是不会被Derived类继承的
+	由此可以看出，Base类中的private元素实际上是不会被Derived类继承的  <--------??????
 	
 	
