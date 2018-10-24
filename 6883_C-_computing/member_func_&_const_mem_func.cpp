@@ -26,6 +26,8 @@ class Time{
 		void Write() const;  // declaration
 }
 
+// **********  const function只能访问所在的class内部的data member, 但是不能改变这些data member的值  ***********
+
 // definition
 void Time::Write() const{
 	cout << hrs << ":" << mins << ":" << secs << endl;
