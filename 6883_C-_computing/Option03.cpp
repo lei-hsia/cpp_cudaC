@@ -29,11 +29,11 @@ double PriceByCRR(double S0, double U, double D, double R, int N, double K
 
 	double q = RiskNeutProb(U,D,R);
 	double Price[N+1];
-	for (int i=0; i<=N; i++){
+	for (int i=0; i<=N; i++){  // 最后一期的时间点N, 知道这一期所有的S, 计算得到所有的C
 		Price[i] = CallPayOff(S(S0,U,D,N,i), K);
 	}
-	for (int n=N-1; n>=0; n--){
-		for (int i=0; i<=n; i++){
+	for (int n=N-1; n>=0; n--){  // 从最后一期decrement往前计算每一期
+		for (int i=0; i<=n; i++){  // 给定某一期,从上往下计算这一期所有的节点的C的价格
 			Price[i] = (q * Price[i+1] + (1-q)*Price[i])/(1+R);
 		}
 	}
