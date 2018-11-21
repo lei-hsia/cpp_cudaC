@@ -1,1 +1,5 @@
 this is pivotal points covered in NYU 6883 C++.
+
+STL: vector: 
+1. begin(): returns an iterator tha can be used to iterate through the collection;
+2. front(): returns a reference to the first element of the collection.
