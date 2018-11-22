@@ -35,6 +35,7 @@ int main() {
 	*/
 	
 	// once join/detach, can't do again; joinable(): detect
+	// 如果强行不是第一次join/detach: crash program
 	if (t1.joinable())
 		t1.join();
 
