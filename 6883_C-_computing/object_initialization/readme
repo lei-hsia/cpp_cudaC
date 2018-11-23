@@ -1,0 +1,5 @@
+initialize an object: 
+
+1. normal constructor
+2. copy constructor
+3. if dynamically allocated, 'delete' at last.
