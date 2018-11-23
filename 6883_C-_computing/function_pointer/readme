@@ -5,3 +5,6 @@ when to use function pointer
 1. operator overloading
 2. const function: declare as: return_type func_name(para_list) const;
 3. Object initialization: copy constructor: e.g. const 类名 &obj
+
+总结: function pointer其实没有什么，还是只是一个pointer而已，作为另一个某个function A的参数，这个functionpointer可以指向不同的function，
+从而达到不改变A的implementation的情况下，就可以根据function pointer传递的不同的参数计算不同的function pointer对应的function的目的
