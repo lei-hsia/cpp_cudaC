@@ -1,0 +1,7 @@
+when overload operator, and using a copy constructor, formal parameters can be written in 2 ways:
+e.g.  as 
+
+1. const Complex &obj;
+2. Complex const &obj;
+
+but just using one: const Complex &obj, for instance.
