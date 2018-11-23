@@ -1,0 +1,16 @@
+friend illustration:
+
+最重要的几点: 
+1. friend 可以是function, class, etc;
+2. friend className/funcName declare在class中, 作为那个class的friend;
+3. friend 并不是所在的class中的member function;
+4. friend不是成员函数, 如果definition在class外 就可以很容易看出来, 因为implementation没有scope operator;
+5. 因为不是member function, 所以用起来不用创建一个class对应的object来调用;
+6. 所以看起来像static method一样;
+
+截止这里, Zeit: 23rd, Nov. 2018, 14:26, EST, 一共复习了几个重要的C++中的概念: 
+1. function pointer;
+2. function overloading;
+3. operator overloading;
+4. copy constructor (3 ways of maneuver);
+5. object initialization (used copy constructor && in usual/dynamic way)
