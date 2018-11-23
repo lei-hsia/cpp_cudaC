@@ -1,4 +1,8 @@
 this is pivotal points covered in NYU 6883 C++.
+非常容易忘记但是很重要的三个点: 
+1. function pointer;
+2. copy constructor(in 'Initialization' field)
+3. object initialization (aligned w. copy constructor)
 
 STL: vector: 
 1. begin(): returns an iterator tha can be used to iterate through the collection;
