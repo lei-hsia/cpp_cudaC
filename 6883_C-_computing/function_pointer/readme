@@ -8,3 +8,9 @@ when to use function pointer
 
 总结: function pointer其实没有什么，还是只是一个pointer而已，作为另一个某个function A的参数，这个functionpointer可以指向不同的function，
 从而达到不改变A的implementation的情况下，就可以根据function pointer传递的不同的参数计算不同的function pointer对应的function的目的
+
+
+<b>其实function pointer的好处能看出来了: 
+定义另一个函数A,这个函数中有一个参数是function pointer,
+然后在main函数中调用A的时候，传递不同的函数名给A，
+A就会通过不同的函数名调用不同的函数</b> 
