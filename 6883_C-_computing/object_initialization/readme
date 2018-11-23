@@ -3,3 +3,31 @@ initialize an object:
 1. normal constructor
 2. copy constructor
 3. if dynamically allocated, 'delete' at last.
+
+
+e.g. 
+
+class Rectangle {
+private:
+	int width;
+	int length;
+public:
+	Rectangle();
+	Rectangle(const Rectangle &r);
+	Rectangle(int w, int l);
+
+	void set(int w, int l); // method, not constructor
+	int area();
+}
+
+Rectangle::Rectangle() {};
+// copy constructor
+Rectangle::Rectangle(const Rectangle &r) {
+	width = r.width;
+	length = r.length;
+}
+
+// initialize w. COPY CONSTRUCTOR
+Rectangle r5 = r4;  // copy assignment, 用了copy constructor
+Rectangle r6(r4);  // 这个最典型!!! 直接用了copy constructor参数形式
+Rectangle *r7 = new Rectangle(r4); // dynamic，还是用了copy constructor
