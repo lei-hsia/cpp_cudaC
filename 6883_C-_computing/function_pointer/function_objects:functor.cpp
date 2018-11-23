@@ -1,5 +1,8 @@
 
 // function objects (functors)
+// functor，顺便复习inheritance: BaseClass中的virtual的function:因为这个class中的constructor是没有implementation的,
+// 而virtual的function也没有implementation需要DerivedClass继承, 所以这个class是abstract class, 不能创建objects,
+// 创建出来的objects也不能被instantiated
 
 #include <iostream>
 using namespace std;
