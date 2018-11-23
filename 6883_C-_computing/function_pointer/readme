@@ -1,1 +1,7 @@
-when to use function pointer.
+when to use function pointer
+
+不仅仅是function pointer, 包括其他的易错点, e.g. 
+
+1. operator overloading
+2. const function: declare as: return_type func_name(para_list) const;
+3. Object initialization: copy constructor: e.g. const 类名 &obj
