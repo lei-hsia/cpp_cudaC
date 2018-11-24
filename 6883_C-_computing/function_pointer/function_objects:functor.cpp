@@ -38,11 +38,12 @@ double binary_op(double left, double right, BinaryFunction* bin_func) {
 int main() {
 	double a = 5.0;
 	double b = 10.0;
-
+	
+	// 这里看出functor是像一个object一样被创建出来的: functor is a function OBJECT; 最明显: object对应的class重载operator()
 	BinaryFunction* pAdd = new Add();
 	BinaryFunction* pMultiply = new Multiply();
 
-	cout << "Add: " << binary_op(a,b, pAdd) << endl;
+	cout << "Add: " << binary_op(a,b, pAdd) << endl; 
 	cout << "Multiply: " << binary_op(a, b, pMultiply) << endl;
 
 	delete pAdd;
