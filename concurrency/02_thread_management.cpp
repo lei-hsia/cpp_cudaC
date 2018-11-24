@@ -16,7 +16,7 @@ public:
 		for (int i = 0; i > -10; i--)
 			cout << "from t1" << i << endl;
 	} */
-	void operator()(string& msg){
+	void operator()(string msg){
 		cout << "t1 says" << msg <<endl;
 		msg = "change msg, main still same as t1: prove pass-by-value" ;
 	}
@@ -30,7 +30,7 @@ int main() {
 
 	// pass-by-reference
 	thread t1((Fctor()), ref(s)); 
-	// pass by pointer
+	// pass by pointer, move的时候functor的参数必须是pass by value
 	thread t1((Fctor()), move(s)); 
 	// 实际上， thread对象自身: 永远都只能be moved, CAN'T be copied
 	thread t2 = t1;  // wrong: can't copy thread: 想一想,copy thread完全没有解释性
