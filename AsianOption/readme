@@ -21,3 +21,16 @@ including peripheral topics such as:
 2. Path Generation
 3. class AsianOption
 4. Main
+
+
+Monte Carlo模拟的精髓: 足够多的random simu平均来逼近真实值: 
+
+```
+for (int i=0; i<num_sims; i++) {
+    double gauss_bm = gaussian_box_muller();
+    S_cur = S_adjust * exp(sqrt(v*v*T)*gauss_bm);
+    payoff_sum += std::max(K - S_cur, 0.0);
+  }
+
+  return (payoff_sum / static_cast<double>(num_sims)) * exp(-r*T);
+```
