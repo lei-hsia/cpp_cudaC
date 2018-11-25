@@ -34,3 +34,10 @@ for (int i=0; i<num_sims; i++) {
 
   return (payoff_sum / static_cast<double>(num_sims)) * exp(-r*T);
 ```
+
+两个大的file类别: payoff.h && payoff.cpp;  asian.h && asian.cpp:  继承关系相关的各种都是体现在header file中的，cpp中只是具体啊实现了function的implementation，
+i.e. payoff.h中定义了PayOffCall和PayOffPut,在cpp中实现具体的方法; 
+     asian.h中定义了AsianOption这个abstract base class和这个class中的pure virtual function && 
+     		   class AsianOptionArithmetic : public AsianOption { };
+		   class AsianOptionGeometric : public AsianOption { };
+asian.cpp 中只是具体实现了不同方式计算出来的pay_off_price的具体的implementation
