@@ -1,0 +1,18 @@
+Asian Option pricing via a Monte Carlo method:
+
+including peripheral topics such as:
+1. class PayOff: 为什么总是定义成abstract base class? 因为有很多中不同的PayOff. 
+                  为什么要定义成functor？ 因为最后如果只需要返回一个value, 那么定义为object, 
+                  只需要call object, 比调用function好用
+                  定义为functor: public在写完constructor之后overload operator()
+                  
+2. class AsianOption: 也是定义为abstract base class(>= 1 virtual function, 
+    因为AsianOption有很多种: arithmetic, geometric, continuous, discrete,所以也用inheritance
+    
+3. destructor: virtual: 这样在code execution-time的时候，correct destructor会被looked up 
+    in an object known as vtable. Hence the destructor associated with Derived
+	  will be called prior to a further call to the destructor associated
+	  with Base. This is the behavior we originally desired. val will be
+	  correctly deallocated. No memory leak this time.
+   
+  
