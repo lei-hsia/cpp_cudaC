@@ -16,3 +16,8 @@ including peripheral topics such as:
 	  correctly deallocated. No memory leak this time.
    
   
+一共4个class: 
+1. PayOff: payoff.h payoff.cpp:  inheritance, abstract base class && Pure virtual function
+2. Path Generation
+3. class AsianOption
+4. Main
