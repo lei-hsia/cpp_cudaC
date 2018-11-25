@@ -1,0 +1,23 @@
+
+Asian Option Class 说明: 
+
+The final component of our program (besides the main file of course!) is the Asian option inheritance hierarchy. We wish to price multiple types of Asian option, including geometric Asian options and arithmetic Asian options. 
+
+One way to achieve this is to have separate methods on an AsianOption class. However this comes at the price of having to continually add more methods if we wish to make more granular changes to our AsianOption class. In a production environment this would become unwieldy. 
+
+
+Instead we can use the abstract base class approach and generate an abstract AsianOption class with a pure virtual method for pay_off_price. This method is implemented in subclasses and determines how the averaging procedure for the asset prices over the asset path lifetime will occur. Two publicly-inherited subclasses AsianOptionArithmetic and AsianOptionGeometric implement this method.
+
+ Normal practice: 写一个 abstract base class: AsianOption class,
+ with a pure virtual method for pay_off_price. 
+ 这个abstract base class不能实例化对象/cannot be instantiated; 
+ 里面的pure virtual function也是什么都没有, 需要Derived class来继承
+ 并implement对应的真正的内容
+ subclass 中真正实现这个pay_off_price的内容, determines how the averaging
+ procedure for the asset prices over the asset path lifetime will 
+ occur. 
+
+ 2个publicly-inherited subclasses: 
+ 1. AsianOptionArithmetic;
+ 2. AsianOptionGeometric; 
+ implements this method.
