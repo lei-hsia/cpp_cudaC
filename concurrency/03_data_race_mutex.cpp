@@ -67,3 +67,45 @@ int main() {
 	return 0;
 }
 
+////////////////////////////	                       ThreadA 			ThreadB
+class stack {						
+	int* _data;				     int v = st.top();//6
+	std::mutex _mu;	   	 if stack:				   int v = st.top();//6
+public:					6		st.pop(); //6
+	void pop();			8					st.pop(); //8
+	int& top();			3					process(v);
+	// ...				9		process(v);
+};								
+							Then: 6 is processed twice, 
+void function_1(stack& st) {				      8 is never processed/lost.
+	int v = st.top();				NOT THREAD SAFE.
+	st.pop();					reason: interface is not designed to be
+	process(v);					thread-safe: DON'T separate them:
+}
+///////////////////////////
+
+解决办法: pop()的同时top(): 不要分离interface的功能。
+///////////////////////////
+class stack {
+	int* _data;
+	std::mutex _mu;
+public:
+	int& pop();  // pop, return a value/ top() at the same time
+	int& top();
+	// ...
+};
+
+void function_1(stack& st) {
+	int v = st.pop();
+	process(v);
+//////////////////////////
+
+新的问题: STL的interface的功能不分离使得thread-safe,但是此时不是exception-safe, 这也是为什么pop()设计的时候并没有让其返回一个value,
+	but that would not be my interest here.
+
+
+
+
+
+
+
