@@ -26,6 +26,7 @@ void shared_print(string msg, int id) {
 	lock_guard<mutex> guard(mu);  // mu unlock if out of scope
 	// should exception happens, mu locks forever
 	// mu.lock();
+	// 如果没有mutex,两个thread competes running for the same common resources: cout.
 	cout << msg << id << endl;
 	// mu.unlock();
 }
