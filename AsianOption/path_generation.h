@@ -1,4 +1,5 @@
 // Path Generation Header
+// 用一个 std::vector<double> 记录这条path上面的所有的prices: prices[i]由prices[i-1]得来: dp
 
 // first function: Box_Muller to generate random gaussian variable
 #ifndef _PATH_GENERATION_H
