@@ -71,7 +71,7 @@ int main(int argc, char ** argv) {
 
     // transfer array to GPU (transfer input)
     // cudaMemcpy(dst, src, t_count)
-    cudaMemcpy(d_in, h_in, ARRAY_BYTES,  cudaMemcpy???);
+    cudaMemcpy(d_in, h_in, ARRAY_BYTES,  cudaMemcpyHostToDevice);
 
     // launch the kernel (实际运行)
     // 函数定义为 __global__ void Func(float* parameter);
@@ -83,7 +83,7 @@ int main(int argc, char ** argv) {
     square<<<1, ARRAY_SIZE>>>(d_out, d_in);  // kernel传递的是kernel函数的参数/GPU程序的参数
 
     // copy back the result
-    cudaMemcpy(h_out, d_out, ARRAY_BYTES, cudaMemcpy???);
+    cudaMemcpy(h_out, d_out, ARRAY_BYTES, cudaMemcpyDeviceToHost);
 
     // print out the resulting array
     for (int i=0; i<ARRAY_SIZE; ++i) {
