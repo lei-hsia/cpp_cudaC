@@ -1,0 +1,3 @@
+1. we write a program that looks like it runs on one thread
+2. we can launch that program on any number of threads
+3. each thread knows its own index in the block & the grid
