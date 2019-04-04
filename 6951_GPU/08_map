@@ -1,0 +1,18 @@
+MAP: 这个ADT适合: 有一集合的元素, 要对每个元素进行处理
+
+1. have a set of elements to process:   e.g. [64 floats]
+2. function to run on each element:     e.g. ["square"]
+
+MAP(elements, function) 
+
+GPUs are good at map:
+1. GPUs have many parallel processors
+2. GPUs optimize for throughput
+
+e.g. Problems that can be solved using a Map: 
+1. sort an input array ❌
+2. add one to each element in an input array ✅： parallel computing
+3. sum up all elements in an input array ❌ 
+4. compute the average of an input array ❌ 
+
+只要不是每个element独立处理: 都是CPU擅长而不是GPU
