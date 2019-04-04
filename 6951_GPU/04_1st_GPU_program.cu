@@ -80,7 +80,7 @@ int main(int argc, char ** argv) {
     // Db: dimension and size of block;
     // Ns: shared memory中除静态内存外, 动态分配给每个block的内存
     // S: cudaStream_t的数量, default为0
-    square<<<1, ARRAY_SIZE>>>(d_out, d_in);
+    square<<<1, ARRAY_SIZE>>>(d_out, d_in);  // kernel传递的是kernel函数的参数/GPU程序的参数
 
     // copy back the result
     cudaMemcpy(h_out, d_out, ARRAY_BYTES, cudaMemcpy???);
