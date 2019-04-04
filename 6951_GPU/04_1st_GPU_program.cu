@@ -42,8 +42,9 @@ for (int i=0; i<64; ++i) {
 __global__ void square(float * d_out, float * d_in) {
     // kernel中, threadIdx是CUDA内置的变量, 这是一个C的struct,通过这个每个线程知道了自己的index
     // threadIdx有3个属性x,y,z;这里都用x以示区分
+    // 所以main函数中创建了64个instances, 那么kernel函数中.x就是从0,1,...63
     int idx = threadIdx.x;
-    float f = d_in[idx];
+    float f = d_in[idx];  // read element: 从全局memory中读取这个index对应的元素值存进f
     d_out[idx] = f * f;
 }
 
