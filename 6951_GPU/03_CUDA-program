@@ -1,0 +1,24 @@
+a typical GPU program: 
+
+1. CPU allocates storage on GPU (cudaMalloc)
+2. CPU copies input data from CPU->GPU (cudaMemcpy)
+3. CPU launches Kernel(s) on GPU to process data (kernel launch)
+4. CPU copies results back to CPU from GPU (cudaMemcpy)
+
+2,4 涉及到数据传输(communication), 可能降低效率;
+好的GPU程序都是比较小的数据量传递，但是需要很多次的计算: 降低 computation/communication 比重;
+如果有很大量的数据传递但是这些数据的计算量很少，那么GPU实际上并不是好的选择
+
+2,4内存数据的传递很好懂，实际上关键的是真实在GPU上发生的计算: 把计算设计为a series of Kernels
+define the GPU computation: 
+    BIG IDEA:  **IMPORTANT**
+ kernels look like serial programs
+ 
+ write your program as if it will run on ONE thread
+ the GPU will run that program on MANY threads: tell how many kernels to launch
+ 
+ GPU good at: 
+ 1. efficiently launching lots of threads  (这个是launching)
+ 2. running lots of threads in parallel    (这个是running)
+ 
+ 
