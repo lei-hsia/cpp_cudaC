@@ -1,0 +1,34 @@
+CUDA program model: 
+
+CUDA allows us to program BOTH processors w. ONE program, so we can use power of GPU in programs;
+
+CUDA program: written in C w. extensions:
+
+        CPU code ----> CPU("host")  (有自己的memory)
+         |       
+         | (co-processor)
+         V
+        GPU code ----> GPU("device") (也有自己的memory:通常是高性能部分的memory)
+
+**** CPU: IN CHARGE; runs the main program, sends directions to GPU to tell it what to do****
+这就导致了下面的这些过程: 
+
+1. move data from CPU to GPU;
+2. move data from GPU back to CPU;
+      1和2在C中叫做memcpy(), 所以CUDA中叫做 cudaMemcpy
+      
+3. allocate GPU memory:
+      C中叫做malloc, CUDA叫做 cudaMalloc
+      
+4. Invoking programs on GPU that computes things in parallel:
+          >>> 这些programs叫做kernels;
+ >>>>>> 说: "the host launches kernels on device"
+ 
+GPU能做: 
+
+initiate data send GPU->CPU ❌  (boss是CPU,GPU只能respond)
+respond to CPU requst to send data GPU->CPU ✅
+initiate data request CPU->GPU ❌
+respond to CPU requet to recv data CPU->GPU ✅
+compute a kernel launched by CPU ✅
+compute a kernel launched by GPU ❌
