@@ -1,0 +1,26 @@
+CPU目标: minimize latency: 某一个具体的task的耗时;  量钢:e.g. 10^(-9) s;
+GPU目标: minimize throughput: 单位时间内完成的task; 量钢:e.g. 带宽: 1GB/s
+这是两者的额主要区别: GPU世界中, 可能宁愿某个T花费两倍的时间，对应的好处是规定时间段内完成的T多很多
+
+CPU是追求快(最短时间)，GPU是最求给定时间内最大任务量; 
+e.g. California-->Virginia: 4500km;  
+CPU: car: 2 ppl at. 200km/h;  GPU: bus: 40 ppl at. 50km/h;
+
+car: LATENCY: 22.5 hrs,   THROUGHPUT: 0.089 ppl/hr;
+bus: LATENCY: 90.0 hrs,   THROUGHPUT: 0.45  ppl/hr;
+
+
+CORE GPU TENETS: 
+GPU:
+1. lots of simple compute units, trade simple control for more compute
+2. explicitly parallel programming model
+3. optimize for throughput, not latency: willing to accept an increased latency 
+    for a single computation in exchange for more computations performed per second
+    
+IMPORTANCE OF PROGRAMMING IN PARALLEL:
+
+  8 core ivy bridge (Intel) 
+* 8-wide AVX vector operations/core
+* 2 threads/core (hyperthreading)
+= 128-way parallelism
+
