@@ -22,3 +22,22 @@ define the GPU computation:
  2. running lots of threads in parallel    (这个是running)
  
  
+CUDA 101: Threads, Blocks, Grids: 
+1. Threads are grouped into blocks
+2. Blocks are grouped into a grid
+3. A kernel is executed as a grid of blocks of threads
+
+一个CUDA程序的骨架: 
+
+__global__ void kernel(...) {
+    // Do some device work
+}
+
+CPU: 
+int main(...) {
+    // Do some host activity
+    cudaMalloc(&d_ptr, sz);
+    cudaMemcpy(d_ptr, h_ptr, hostToDev);
+    kernel<<<...>>>();
+    cudaMemcpy(h_ptr, d_ptr, devToHost);
+}
