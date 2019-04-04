@@ -1,0 +1,35 @@
+square<<<1, 64>>>(d_out, d_in);
+inside: 1: #blocks;  64: #threads PER block
+64: #threads PER block: 新的CPU最多1024个线程并行;
+
+1, 2, 3 dimensional 都可以: CUDA
+
+e.g. 128*128 pixel image: launch 1 thread per pixel: 
+可以: 1. launch 128 blocks in y-dimension; each block: 128*1 block of thread in x-dimension
+      2. launch a 8*8 grid of blocks, each block: 16 threads *16 threads
+      
+KERNEL LAUNCH:
+    kernel <<< GRID of BLOCKS, BLOCKS of THREADS>>>(...)
+                1,2,3D
+            所以实际上kernel的两个参数可以是多维的,用dim3(x,y,z)这个C的struct指明;
+            如果不指明, 第二维和第三维defaults＝1
+            
+           dim3(x,y,z) :  dim3(w,1,1) == dim3(w) == w
+    square<<<1, 64>>> == square<<<dim3(1,1,1), dim3(64,1,1)>>>
+    
+ 最通用kernel launch: 
+  square<<<dim3(bx, by, bz), dim3(tx, ty, tz), shared-memory_size>>>(...)
+  
+  每个线程知道 threadIdx: thread within block: threadIdx.x, threadIdx.y, etc.
+  其实还知道了很多信息: 
+  1. 当前线程所在的block的维度; block Dim: size of a block
+  2. 当前block在更大的grid上的编号: block Idx: block within grid
+  3. 所处的grid的维度: size of grid
+
+e.g.
+
+  kernel<<<dim3(8,4,2), dim3(16, 16)>>>(...)
+  
+  #blocks: 8*4*2 (分别是x,y,z)方向上的blocks数量
+  #threads/block: 16*16
+  #total threads: 上面相乘
