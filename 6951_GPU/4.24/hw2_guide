@@ -1,0 +1,7 @@
+std::exponential_distribution
+
+This distribution produces random numbers where each value represents the interval between 
+two random events that are independent but statistically defined by a constant average rate 
+of occurrence (its lambda, λ).
+
+hw1: 模拟exponential variable X: 通过uniform的u来模拟: 令X的cdf F(X) = u; inverse得到X;
