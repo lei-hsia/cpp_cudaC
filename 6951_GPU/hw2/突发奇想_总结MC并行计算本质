@@ -1,0 +1,6 @@
+我看Monte Carlo本质上就是: 
+
+    用Mesenne Twister 生成一堆随机数, 然后底层计算Stock的价格还是用的BS的公式: S = mu*S*dt + sigma*S*dz;
+    where z 是MT按照MC的框架下产生的随机数;
+    
+    CPU, GPU 下计算的是 s_curr = mu*s_curr*dt + sigma*s_curr*d_normals[n_idx] 不断增加sum_s的这个过程;
