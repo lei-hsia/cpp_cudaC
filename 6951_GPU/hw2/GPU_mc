@@ -1,0 +1,34 @@
+MC simulations in CUDA: barrier option pricing: 
+https://www.quantstart.com/articles/Monte-Carlo-Simulations-In-CUDA-Barrier-Option-Pricing
+
+GPU上用monte carlo解决european option pricing: 
+http://www.ssc.net.cn/files/pdf/35_10.pdf 
+实际上只是把生成随机数的模拟和MC生成数的过程放在了GPU上面, 其他的还是在CPU上面;
+
+As the Monte Carlo method is basically a way to compute expected values by generating 
+random scenarios and then averaging them, it is actually very efficient to parallelise. 
+Moreover, with consumer CPUs on standard computers it is just not possible to reach 
+the accuracy needed, as simulating over one million paths is usually very time consuming.
+
+With the GPU we can reduce this problem by parallelising the paths. 
+That is, we can assign each path to a single thread, simulating thousands of them in parallel, 
+with massive savings in computational power and time
+
+Monte Carlo and Path Dependency
+First, let's see what and how to parallelise. In option pricing, usually the only variable 
+that can assume random values is the underlying, so we only have to write a kernel that can 
+generate a simulated value for the underlying and then calculate the option price. That's it. 
+Sounds easy, but actually we have to cope with a couple of issues that we could have avoided 
+for the pricing of a path-independent option.
+期权定价中, 实际上可能跟random number扯上关系的就只有标的资产的价格而已, 所以实际上CUDA的kernel函数只用
+具有生成随机数的能力就行了; 有了节省时间并行生成的1e6个随机数, 就可以根据随机数得到标的资产价格, 从而得到对应
+的期权价格; 看起来简单, 但是实际上不是; e.g. 比如说我们至少需要1e6个MC的path, 因为每时每刻都可能barrier就要
+strike了, 所以每时每刻都需要知道对应的变化, 这个也是随机数, 那么简单地来看, time interval选做是以"天"来计算, 
+那么一共就有365*1e6个随机数需要生成; 生成得到的随机数之后, 又需要计算365*1e6次得到对应的价格; 这就是很大的计算量了;
+而且这还是一天计算一次, 实际上很多时候都是以“分钟”或者“秒”来计算的, 一天计算一次根本就不行
+
+
+
+
+
+
