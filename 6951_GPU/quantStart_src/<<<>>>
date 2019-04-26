@@ -1,0 +1,14 @@
+ In the CUDA programming model we speak of launching a kernel with 
+ a grid of thread blocks. 
+ 
+ The first argument in the execution configuration specifies 
+ the number of thread blocks in the grid, 
+ and the second specifies the number of threads in a thread block.
+ 
+ mc_kernel<<<GRID_SIZE, BLOCK_SIZE>>>(
+            d_s, T, K, B, S0, sigma, mu, r, dt, d_normals, N_STEPS, N_PATHS);
+        }
+ 
+ GRID_SIZE: 大些, 表示一个grid中有多少个thread block;
+ BLOCK_SIZE: 小些, 表示一个thread block有多少个threads;
+ 
