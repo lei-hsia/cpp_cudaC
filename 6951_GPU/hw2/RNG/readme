@@ -1,0 +1,7 @@
+Different Random Number Generator(RNG): 
+
+best: 1. Messene Twister;
+      2. srand;
+      3. rand + seed;
+      
+      2 & 3: not really random
