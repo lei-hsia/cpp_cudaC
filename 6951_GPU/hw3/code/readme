@@ -1,0 +1,9 @@
+This is the folder used to pricing the European vanilla call/put option. 
+
+I separated FDM method implementation cpp file from the PDE file. 
+
+FDM for either Black-Scholes model or Lognormal Stochastic volatility model is the same: both are still FDM. 
+
+The only difference would be PDE cpp file. Two scenarios use different PDEs.
+
+The pricing graph for a vanilla call is graphed via a python script.
